@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ypModelContainer" CdmEntityContainer="ypEntities">
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="ypModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="ID_client" ColumnName="ID_client" />
+          <ScalarProperty Name="clientName" ColumnName="clientName" />
+          <ScalarProperty Name="clientSurname" ColumnName="clientSurname" />
+          <ScalarProperty Name="clientMidlname" ColumnName="clientMidlname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phoneNum" ColumnName="phoneNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderDetails">
+      <EntityTypeMapping TypeName="ypModel.orderDetails">
+        <MappingFragment StoreEntitySet="orderDetails">
+          <ScalarProperty Name="ID_orderDetail" ColumnName="ID_orderDetail" />
+          <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+          <ScalarProperty Name="product_ID" ColumnName="product_ID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="ypModel.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="ID_order" ColumnName="ID_order" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product">
+      <EntityTypeMapping TypeName="ypModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="ID_product" ColumnName="ID_product" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

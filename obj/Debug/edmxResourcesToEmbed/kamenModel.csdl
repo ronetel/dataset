@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ypModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="ID_client" />
+    </Key>
+    <Property Name="ID_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clientSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clientMidlname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phoneNum" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__Client_I__4F7CD00D" FromRole="client" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="orderDetails">
+    <Key>
+      <PropertyRef Name="ID_orderDetail" />
+    </Key>
+    <Property Name="ID_orderDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_ID" Type="Int32" Nullable="false" />
+    <Property Name="product_ID" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orderDeta__order__52593CB8" FromRole="orderDetails" ToRole="orders" />
+    <NavigationProperty Name="product" Relationship="Self.FK__orderDeta__produ__534D60F1" FromRole="orderDetails" ToRole="product" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="ID_order" />
+    </Key>
+    <Property Name="ID_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Client_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK__orders__Client_I__4F7CD00D" FromRole="orders" ToRole="client" />
+    <NavigationProperty Name="orderDetails" Relationship="Self.FK__orderDeta__order__52593CB8" FromRole="orders" ToRole="orderDetails" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="ID_product" />
+    </Key>
+    <Property Name="ID_product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="orderDetails" Relationship="Self.FK__orderDeta__produ__534D60F1" FromRole="product" ToRole="orderDetails" />
+  </EntityType>
+  <Association Name="FK__orders__Client_I__4F7CD00D">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="ID_client" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderDeta__order__52593CB8">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="ID_order" />
+      </Principal>
+      <Dependent Role="orderDetails">
+        <PropertyRef Name="order_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderDeta__produ__534D60F1">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="ID_product" />
+      </Principal>
+      <Dependent Role="orderDetails">
+        <PropertyRef Name="product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ypEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="orderDetails" EntityType="Self.orderDetails" />
+    <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="product" EntityType="Self.product" />
+    <AssociationSet Name="FK__orders__Client_I__4F7CD00D" Association="Self.FK__orders__Client_I__4F7CD00D">
+      <End Role="client" EntitySet="client" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderDeta__order__52593CB8" Association="Self.FK__orderDeta__order__52593CB8">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="orderDetails" EntitySet="orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderDeta__produ__534D60F1" Association="Self.FK__orderDeta__produ__534D60F1">
+      <End Role="product" EntitySet="product" />
+      <End Role="orderDetails" EntitySet="orderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

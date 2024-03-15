@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ypModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="ID_client" />
+    </Key>
+    <Property Name="ID_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clientName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="clientSurname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="clientMidlname" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phoneNum" Type="varchar" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orderDetails">
+    <Key>
+      <PropertyRef Name="ID_orderDetail" />
+    </Key>
+    <Property Name="ID_orderDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_ID" Type="int" Nullable="false" />
+    <Property Name="product_ID" Type="int" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="ID_order" />
+    </Key>
+    <Property Name="ID_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderDate" Type="date" Nullable="false" />
+    <Property Name="Client_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="ID_product" />
+    </Key>
+    <Property Name="ID_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__orderDeta__order__52593CB8">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="ID_order" />
+      </Principal>
+      <Dependent Role="orderDetails">
+        <PropertyRef Name="order_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderDeta__produ__534D60F1">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="ID_product" />
+      </Principal>
+      <Dependent Role="orderDetails">
+        <PropertyRef Name="product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__Client_I__4F7CD00D">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="ID_client" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ypModelContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orderDetails" EntityType="Self.orderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__orderDeta__order__52593CB8" Association="Self.FK__orderDeta__order__52593CB8">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="orderDetails" EntitySet="orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderDeta__produ__534D60F1" Association="Self.FK__orderDeta__produ__534D60F1">
+      <End Role="product" EntitySet="product" />
+      <End Role="orderDetails" EntitySet="orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__Client_I__4F7CD00D" Association="Self.FK__orders__Client_I__4F7CD00D">
+      <End Role="client" EntitySet="client" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
