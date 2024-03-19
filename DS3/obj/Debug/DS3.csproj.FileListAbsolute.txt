@@ -1,0 +1,15 @@
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\bin\Debug\DS3.exe.config
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\bin\Debug\DS3.exe
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\bin\Debug\DS3.pdb
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.csproj.AssemblyReference.cache
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\MainWindow.g.cs
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\App.g.cs
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3_MarkupCompile.cache
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3_MarkupCompile.lref
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\MainWindow.baml
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.g.resources
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.Properties.Resources.resources
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.csproj.GenerateResource.cache
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.csproj.CoreCompileInputs.cache
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.exe
+C:\Users\ronetel\source\repos\кайф\DS3\DS3\obj\Debug\DS3.pdb
